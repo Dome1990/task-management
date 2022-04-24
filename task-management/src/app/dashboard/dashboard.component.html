@@ -1,0 +1,8 @@
+<div class="dashboard">
+    <mat-card *ngFor="let id of allIds" routerLink="/{{ id.id }}" class="card">{{id.headline}}</mat-card>
+
+    <button (click)="openAddDialog()" class="add-btn" mat-fab color="primary">
+        <mat-icon>add</mat-icon>
+    </button>
+
+</div>

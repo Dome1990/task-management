@@ -1,0 +1,9 @@
+<form class="example-form">
+    <mat-form-field appearance="fill">
+        <mat-label>Name your new List</mat-label>
+        <input [(ngModel)]="newTask.headline" matInput type="text" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="newTodolist()">Add</button>
+</form>

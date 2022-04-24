@@ -1,0 +1,29 @@
+.dashboard {
+    position: relative;
+    display: flex;
+    min-height: 85vh;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    height: 100px;
+    width: 150px;
+    cursor: pointer;
+    transition: all 255ms ease-in-out;
+    margin: 16px;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.add-btn {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}

@@ -1,0 +1,83 @@
+<div class="list">
+
+    <mat-card class="list-card">
+        <mat-card-title>
+            <div class="title">
+                <input class="no-style headline" [(ngModel)]="task.headline" (ngModelChange)="headlineChange()"
+                    type="text" value="{{ headline }}">
+                <div class="btn-div">
+                    <button mat-icon-button (click)="sort()">
+                        <mat-icon>swap_vert</mat-icon>
+                    </button>
+                    <button (click)="showAddInput()" mat-icon-button>
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="addTask" class="add-task">
+                <mat-form-field>
+                    <mat-label class="new-task-input">New task</mat-label>
+                    <input [(ngModel)]="newTodo" id="newTodo" matInput>
+                </mat-form-field>
+                <button (click)="addTodo()" mat-mini-fab color="primary">
+                    <mat-icon>plus_one</mat-icon>
+                </button>
+            </div>
+        </mat-card-title>
+
+        <mat-card-content>
+            <table *ngIf="sortedbydate">
+                <tr *ngFor="let task of task.todos; index as i">
+                    <td>
+                        <mat-icon *ngIf="task.status" (click)="changeStatus(i)">radio_button_unchecked</mat-icon>
+                        <mat-icon *ngIf="!task.status" (click)="changeStatus(i)">radio_button_checked</mat-icon>
+                    </td>
+                    <td [ngClass]="{'no-focus': task.status === false}">
+                        <input [(ngModel)]="task.taskName" (ngModelChange)="save()" class="no-style" type="text"
+                            value="{{ task.taskName }}">
+                    </td>
+                    <td>
+                        <mat-icon class="delete" (click)="deleteTask(i)">delete</mat-icon>
+                    </td>
+                </tr>
+            </table>
+
+
+            <div *ngIf="!sortedbydate">
+
+                <table *ngFor="let task of task.todos; index as i">
+                    <tr *ngIf="task.status == true">
+                        <td>
+                            <mat-icon *ngIf="task.status" (click)="changeStatus(i)">radio_button_unchecked</mat-icon>
+                            <mat-icon *ngIf="!task.status" (click)="changeStatus(i)">radio_button_checked</mat-icon>
+                        </td>
+                        <td [ngClass]="{'no-focus': task.status === false}">
+                            <input [(ngModel)]="task.taskName" (ngModelChange)="save()" class="no-style" type="text"
+                                value="{{ task.taskName }}">
+                        </td>
+                        <td>
+                            <mat-icon class="delete" (click)="deleteTask(i)">delete</mat-icon>
+                        </td>
+                    </tr>
+                </table>
+
+                <table *ngFor="let task of task.todos; index as i">
+                    <tr *ngIf="task.status == false">
+                        <td>
+                            <mat-icon *ngIf="task.status" (click)="changeStatus(i)">radio_button_unchecked</mat-icon>
+                            <mat-icon *ngIf="!task.status" (click)="changeStatus(i)">radio_button_checked</mat-icon>
+                        </td>
+                        <td [ngClass]="{'no-focus': task.status === false}">
+                            <input [(ngModel)]="task.taskName" (ngModelChange)="save()" class="no-style" type="text"
+                                value="{{ task.taskName }}">
+                        </td>
+                        <td>
+                            <mat-icon class="delete" (click)="deleteTask(i)">delete</mat-icon>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
